@@ -1,21 +1,10 @@
-version: 1
-name: weather-forecast-mcp
-description: Weather forecast MCP server using Open-Meteo API
-transport:
-  type: http
-  port: 8000
-security:
-  api_key: e170e2e3-a1fb-44c6-a770-e603f97f5fb7
-tools:
-  - name: get_temperature
-    description: Get the current temperature for a given location
-    parameters:
-      type: object
-      properties:
-        latitude:
-          type: number
-          description: Geographic latitude
-        longitude:
-          type: number
-          description: Geographic longitude
-      required: [latitude, longitude]
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    properties: {}
+  commandFunction:
+    |-
+    (config) => ({ command: 'python', args: ['-m', 'server'] })
+  exampleConfig: {}
